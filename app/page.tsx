@@ -71,6 +71,23 @@ export default function PartyMenuApp() {
     return summary
   }, [selectedDishes])
 
+  const categoryCounts = useMemo(() => {
+    const counts = {
+      All: 0,
+      Starter: 0,
+      "Main Course": 0,
+      Dessert: 0,
+      Sides: 0,
+    }
+
+    selectedDishes.forEach((item) => {
+      counts[item.category] += item.quantity
+      counts.All += item.quantity
+    })
+
+    return counts
+  }, [selectedDishes])
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -87,6 +104,7 @@ export default function PartyMenuApp() {
           selectedCategory={selectedCategory}
           selectedDietaryType={selectedDietaryType}
           searchTerm={searchTerm}
+          categoryCounts={categoryCounts}
           onCategoryChange={setSelectedCategory}
           onDietaryTypeChange={setSelectedDietaryType}
           onSearchChange={setSearchTerm}

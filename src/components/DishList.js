@@ -3,7 +3,7 @@ import DishCard from "./DishCard"
 /**
  * DishList Component
  *
- * Renders a list of dishes grouped by category
+ * Renders a list of dishes grouped by category with responsive grid layout
  * Handles empty states when no dishes match the current filters
  * Organizes dishes into category sections with proper headings
  *
@@ -39,9 +39,8 @@ const DishList = ({ dishes, onAddDish, onRemoveDish, onShowIngredients, getSelec
       {Object.entries(groupedDishes).map(([category, categoryDishes]) => (
         <div key={category}>
           {/* Category heading with styled border */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-cyan-500 pb-2">{category}</h2>
-          {/* Responsive grid for dish cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">{category}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categoryDishes.map((dish) => (
               <DishCard
                 key={dish.id}

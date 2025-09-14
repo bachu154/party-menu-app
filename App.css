@@ -62,9 +62,10 @@
   }
 
   .ingredient-modal {
-    width: 90%;
-    padding: 20px;
+    width: 95%;
+    padding: 0;
     margin: 1rem;
+    max-height: 95vh;
   }
 
   /* Mobile-specific grid adjustments */
@@ -75,7 +76,7 @@
 
   /* Mobile header adjustments */
   .text-4xl {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   /* Mobile sidebar adjustments */
@@ -87,6 +88,27 @@
   /* Mobile button adjustments */
   .flex-wrap {
     justify-content: center;
+  }
+
+  /* Mobile category tabs */
+  .flex.overflow-x-auto {
+    padding: 0 1rem;
+  }
+
+  .flex-shrink-0 {
+    min-width: auto;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Enhanced tablet responsiveness */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ingredient-modal .max-w-lg {
+    max-width: 600px;
   }
 }
 

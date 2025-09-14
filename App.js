@@ -81,6 +81,23 @@ function App() {
     return selected ? selected.quantity : 0
   }
 
+  const categoryCounts = useMemo(() => {
+    const counts = {
+      All: 0,
+      Starter: 0,
+      "Main Course": 0,
+      Dessert: 0,
+      Sides: 0,
+    }
+
+    selectedDishes.forEach((item) => {
+      counts[item.category] += item.quantity
+      counts.All += item.quantity
+    })
+
+    return counts
+  }, [selectedDishes])
+
   // Calculate selection summary by category for sidebar display
   // Uses useMemo for performance optimization
   const selectionSummary = useMemo(() => {
@@ -109,13 +126,13 @@ function App() {
           <p className="text-gray-600 text-lg">Choose your perfect party menu from our delicious selection</p>
         </div>
 
-        {/* Filter Controls */}
         <Filters
           categories={categories}
           dietaryTypes={dietaryTypes}
           selectedCategory={selectedCategory}
           selectedDietaryType={selectedDietaryType}
           searchTerm={searchTerm}
+          categoryCounts={categoryCounts}
           onCategoryChange={setSelectedCategory}
           onDietaryTypeChange={setSelectedDietaryType}
           onSearchChange={setSearchTerm}
